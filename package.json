@@ -1,0 +1,34 @@
+{
+  "name": "tongfu-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "alipay-sdk": "^3.0.4",
+    "bson": "^3.0.2",
+    "chalk": "^2.4.1",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
+    "crypto": "^1.0.1",
+    "express": "^4.16.4",
+    "express-formidable": "^1.2.0",
+    "express-session": "^1.15.6",
+    "log4js": "^3.0.6",
+    "memory-cache": "^0.2.0",
+    "moment": "^2.22.2",
+    "mongoose": "^5.3.9",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-id-autoinc": "^2013.7.14-4",
+    "qr-image": "^3.2.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "errorhandler": "^1.5.0",
+    "nodemon": "^1.18.5"
+  }
+}

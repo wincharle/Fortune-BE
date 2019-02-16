@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $('#btn').click(() => {
+            $.ajax({
+                url: 'http://localhost:3000/user/login.do',
+                method: 'post',
+                data: {
+                    username: 'wincharle',
+                    password: '123456',
+                    // email: 'wincharle@qq.com',
+                    // phone: '15507519328',
+                    // question: 'who are you?',
+                    // answer: 'wincharle'
+                },
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(err){
+                    console.error(err);
+                }
+            })
+        });
+    </script>
+</body>
+</html>
