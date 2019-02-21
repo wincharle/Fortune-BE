@@ -49,6 +49,7 @@ class ProductService {
         productVO.mainImage = product.mainImage;
         productVO.status = product.status;
         productVO.price = product.price;
+        productVO.imageHost = config.imageHost;
         return productVO;
     }
     async getProductDetailVO(product) {

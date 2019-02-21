@@ -8,7 +8,7 @@ module.exports = {
         maxAge: 24 * 60 * 60 * 1000
     },
     mongodb: 'mongodb://localhost:27017/tongfu',
-    imageHost: 'http://localhost:3000/static/images',
+    imageHost: 'http://localhost:3000/static/images/',
     qrHost: 'http://localhost:3000/static/qrcode/',
     notifyUrl: 'http://iwhqpf.natappfree.cc/order/alipay_callback.do',
     images: path.join(__dirname, 'public/images'),

@@ -23,14 +23,13 @@ exports.pagination = async function (pageNum, pageSize, model, condition, orderB
         total = await model.count(condition),
         list = await model.find(condition).sort(orderBy).skip((pageNum - 1) * pageSize).limit(pageSize),
         size = list.length,
-        pages = Math.floor((total / pageSize)) + 1,
+        pages = Math.ceil((total / pageSize)),
         firstPage = 1,
-        lastPage = Math.floor((total / pageSize)) + 1,
+        lastPage = Math.ceil((total / pageSize)),
         isFirstPage = (pageNum == firstPage) ? true : false,
         isLastPage = (pageNum == lastPage) ? true : false,
         hasPreviousPage = (isFirstPage == true) ? false : true,
         hasNextPage = (isLastPage == true) ? false : true;
-
     return {
         pageNum: pageNum,
         pageSize: pageSize,

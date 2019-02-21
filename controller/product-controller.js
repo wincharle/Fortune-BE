@@ -47,30 +47,29 @@ class Product {
             orderBy = req.query.orderBy,
             pageNum = parseInt(req.query.pageNum) || 1,
             pageSize = parseInt(req.query.pageSize) || 10,
-            categoryId = parseInt(req.query.categoryId),
+            categoryId = req.query.categoryId && parseInt(req.query.categoryId),
             condition = {};
-
         if (keyword === undefined && categoryId === undefined) {
             return res.json({ "status": STATUS.PARAMERROR, "msg": '参数错误' });
         }
         // 获得所有的后代分类
-        if (categoryId !== undefined) {
+        if (categoryId) {
             var result = await categoryService.getDescendantCategory([], categoryId);
             var categoryIdArr = result.map(item => { return item.id });
-            categoryIdArr.push(categoryId)
+            categoryIdArr.push(categoryId);
         }
         // 根据传递的参数不同，组装查询条件
-        if (categoryId !== undefined && keyword === undefined) {
+        if (categoryId && !keyword) {
             var category = await CategoryModel.findOne().where('id').equals(categoryId);
             if (category === null) {
                 return res.json({ "status": STATUS.ERROR, "msg": '查无此分类' });
             }
             condition = { categoryId: { $in: categoryIdArr } }
         }
-        if (categoryId === undefined && keyword !== undefined) {
+        if (!categoryId && keyword) {
             condition = { name: { $regex: new RegExp(`(.)*${keyword}(.)*`, 'i') } };
         }
-        if (categoryId !== undefined && keyword !== undefined) {
+        if (categoryId && keyword) {
             condition = {
                 $and: [
                     { name: { $regex: new RegExp(`(.)*${keyword}(.)*`, 'i') } },

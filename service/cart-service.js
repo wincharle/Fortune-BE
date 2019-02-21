@@ -65,7 +65,7 @@ class CartService{
             username: cart.username,
             productId: cart.productId,
             quantity: buyLimitCount,
-            priductName: product.name,
+            productName: product.name,
             productSubtitle: product.subtitle,
             productMainImage: product.mainImage,
             productPrice: product.price,

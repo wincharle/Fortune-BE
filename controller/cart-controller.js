@@ -17,10 +17,10 @@ class Cart {
         var productId = req.query.productId;
         var count = req.query.count;
 
-        if (productId == undefined || count == undefined) {
+
+        if (!productId || !count) {
             return res.json({ "status": STATUS.PARAMERROR, "msg": "参数错误" });
         }
-
         productId = productId - 0;
         count = count - 0;
         try {
@@ -189,11 +189,11 @@ class Cart {
             return res.json({ "status": STATUS.SUCCESS, "data": 0 });
         }
         var username = req.session.user.username;
-        try{
+        try {
             var count = await cartService.selectCartProductCount(username);
-        }catch(err){
+        } catch (err) {
             next(err);
-        }       
+        }
         return res.json({ "status": STATUS.SUCCESS, "data": count });
     }
 }

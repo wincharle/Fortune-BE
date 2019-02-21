@@ -16,21 +16,20 @@ class Shipping {
      */
     async add(req, res, next) {
         var username = req.session.user.username;
-        var { receiverName, receiverPhone, receiverMobile, receiverProvince, receiverCity, receiverDistrict, receiverAddress, receiverZip } = req.query;
-        if (!receiverName || !receiverPhone || !receiverMobile || !receiverProvince || !receiverCity || !receiverDistrict || !receiverAddress) {
+        var { receiverName, receiverPhone, receiverProvince, receiverCity, receiverAddress, receiverZip } = req.query;
+        if (!receiverName || !receiverPhone  || !receiverProvince || !receiverCity || !receiverAddress) {
             return res.json({ "status": STATUS.PARAMERROR, "msg": "参数错误" });
         }
         var shipping = {
             username: username,
             receiverName: receiverName,
             receiverPhone: receiverPhone,
-            receiverMobile: receiverMobile,
             receiverProvince: receiverProvince,
             receiverCity: receiverCity,
-            receiverDistrict: receiverDistrict,
             receiverAddress: receiverAddress,
             receiverZip: receiverZip,
         }
+        
         try {
             var result = await shippingService.addShipping(shipping);
             return res.json({
